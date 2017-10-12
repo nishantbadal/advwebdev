@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TinyURL</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+      
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      
+  </head>
+
+  <body style="padding-top: 70px;">
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "TinyURLCopy", "/", class: "navbar-brand" %>
+    </div>
+      
+    <ul class="nav navbar-nav">
+      <% if @user == nil %>
+        <li><a><%=@userSes%></a></li>
+        <li><%= link_to "Sign Up", "/access/signup" %></li>
+        <li><%= link_to "Sign In", '/access/login' %></li>
+      <% else %>    
+        <li><%= link_to @userSes, "/" %></li>
+        <li><%= link_to "Sign Out", '/access/logout'%></li>
+      <% end %>
+    </ul>
+      
+    <div class="navbar-right">
+        
+        <%= link_to "Create Link", new_link_path, class: 'btn btn-default navbar-btn' %>
+            
+    </div>
+      
+       
+  </div>
+</nav>
+      
+    <%= yield %>
+        
+  </body>
+</html>

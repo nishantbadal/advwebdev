@@ -1,0 +1,27 @@
+<div class = "row">
+    <div class = "col-md-4">
+    </div>
+    <div class = "col-md-4 text-center">
+    <h1><%= @userAccount.name %>'s Posts</h1>
+<% @posts.each do |post| %>
+    <div style="border: thin solid gray">
+    <p><strong><%= User.find(post.user_id).name %></strong></p>
+        
+    <%= image_tag post.image.url(:large) %>
+    <br>
+    <% if @likes.where(:user_id => @user, :post_id => post.id).count > 0 %>
+        <%= link_to 'Unlike', '/posts/%{postId}/likes/1' % {:postId => post.id}, :class => "btn", method: :delete, class: 'btn btn-default navbar-btn' %>
+    <% else %>   
+        <%= link_to 'Like', '/posts/%{postId}/likes' % {:postId => post.id}, :class => "btn", method: :post, class: 'btn btn-default navbar-btn' %>
+    <% end %>
+        
+    <p><strong><%= @likes.where(post_id: post.id).count %> likes</strong></p>
+    <p><strong><%= post.title %></strong></p>
+    <p><%= post.description %></p>
+    <%= link_to 'More...', '/posts/%{postId}' % {:postId => post.id}, :class => "btn", method: :get, class: 'btn btn-default navbar-btn' %>
+    </div>
+<% end %>
+    </div>
+    <div class = "col-md-4">
+    </div>
+</div>

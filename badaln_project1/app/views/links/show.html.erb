@@ -1,0 +1,26 @@
+<div class = "row">
+    <div class = "col-md-4">
+    </div>
+    <div class = "col-md-4 text-center">
+        <% if !flash.empty? %>
+            <div class="alert alert-info">
+                <%= flash[:notice] %>
+            </div>
+        <% end %>
+        
+    <div style="border: thin solid gray">
+    <p><strong><%= @link.title %></strong></p>
+    <br>
+        
+    <p>
+        <strong>Use this shortened URL: <%= link_to 'links/go/' + @link.short_url, '/links/go/%{shortUrl}' % {:shortUrl => @link.short_url} %>
+        </strong>
+    </p>
+    <p>Original URL: <%= @link.url %></p>
+    <p>Total Clicks: <%= @link.overall_usage %></p> 
+    </div>
+        
+    </div>
+    <div class = "col-md-4">
+    </div>
+</div>

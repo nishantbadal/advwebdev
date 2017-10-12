@@ -1,0 +1,39 @@
+<div class = "row">
+    <div class = "col-md-4">
+    </div>
+<div class = "col-md-4 text-center">
+    <% if !flash.empty? %>
+            <div class="alert alert-info">
+                <%= flash[:notice] %>
+            </div>
+        <% end %>
+<h1>Login</h1>
+
+<div class= "login">
+
+<%= form_tag(access_attempt_path, :method => :post) do %>
+    <table>
+        <tr>
+            <td><%= label_tag(:name) %></td>
+            <td><%= text_field_tag(:name, params[:name], class: 'form-control') %></td>
+        </tr>
+        
+        <tr>
+            <td><%= label_tag(:password) %></td>
+            <td><%= password_field_tag(:password, nil, class: 'form-control') %></td>
+        </tr>
+        
+        <tr>
+            <td><%= submit_tag("Log In", class: 'btn btn-default btn-md btn-submit')%></td>
+        </tr>
+    
+    
+    </table>
+    
+    <% end %>
+
+</div>
+    </div>
+    <div class = "col-md-4">
+    </div>
+</div>

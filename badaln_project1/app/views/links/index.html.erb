@@ -1,0 +1,56 @@
+<div class = "row">
+    <div class = "col-md-4">
+    </div>
+    <div class = "col-md-4 text-center">
+        <% if !flash.empty? %>
+            <div class="alert alert-info">
+                <%= flash[:notice] %>
+            </div>
+        <% end %>
+        
+<h1>Welcome!</h1>
+TinyURLCopy lets you condense long links to 25 characters! Simply create an account and start shortening.
+        
+<h1>Documentation</h1>
+To use this service follow these steps:
+<br>
+<br>
+1. Create an account
+<br>
+<br>
+2. Click the 'Create Link' button on the top right
+<br>
+<br>
+3. Fill in a title and paste the original URL
+<br>
+<br>
+4. Click submit and a 25 character URL will be generated
+<br>
+<br>
+5. You can accesss all the URLs you have shortened by clicking your name
+<br>
+<br>
+6. You can also see how many times each shortened URL has been used
+<br>
+<br>
+ 
+<% if @user != nil%>
+<h1>Your links</h1>      
+<% @l.each do |link| %>
+    <div style="border: thin solid gray">
+        <p><strong><%= link.title %></strong></p> 
+    <p>
+        <strong>Use this shortened URL: <%= link_to 'links/go/' + link.short_url, '/links/go/%{shortUrl}' % {:shortUrl => link.short_url} %>
+        </strong>
+    </p>
+    <p>Original URL: <%= link.url %></p>
+    <p>Total Clicks: <%= link.overall_usage %></p>
+    </div>
+<% end %>
+<% else %>
+<% end %>
+        
+    </div>
+    <div class = "col-md-4">
+    </div>
+</div>

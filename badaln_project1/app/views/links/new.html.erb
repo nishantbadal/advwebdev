@@ -1,0 +1,16 @@
+<%= form_for @link, url: new_link_path(@link) do |f| %>
+	<p>
+    	<%= f.label :title %>
+    	<%= f.text_field :title %>
+        
+        <%= f.label :url %>
+    	<%= f.text_field :url %>
+        
+        <%= f.hidden_field :short_url %>
+        <%= f.hidden_field :overall_usage %>
+    	<%= f.hidden_field :user_id %>
+  	</p>
+  	
+ 
+  	<%= f.submit %>
+<% end %>
